@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billetera</title>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="./img/billetera.png" alt="logo">
+    </header>
+    <main>
+        <section class="cash">
+            <h1>$ <span class="total">0</span></h1>
+        </section>
+        <section class="form">
+            <input class="input" type="number" placeholder="Ingresos o Egresos">
+            <div class="buttons">
+                <button class="entry">Ingreso</button>
+                <button class="discharge">Egreso</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h5>Una App Hecha por Diego</h5>
+        <p>Tiene derechos de autor</p>
+    </footer>
+
+    <script>
+        let entry = document.querySelector('.entry');
+        let discharge = document.querySelector('.discharge');
+        
+
+        entry.addEventListener('click', function(){
+            let total = document.querySelector('.total');
+            let input = document.querySelector('.input').value;
+
+            if (input != "" && input != " "){
+                let nuevoTotal = parseInt(total.innerText) + parseInt(input);
+                total.innerText = nuevoTotal;
+                document.querySelector('.input').value = "";
+            }
+        });
+
+        discharge.addEventListener('click', function(){
+            let total = document.querySelector('.total');
+            let input = document.querySelector('.input').value;
+
+            if (input != "" && input != " "){
+                let nuevoTotal = parseInt(total.innerText) - parseInt(input);
+                if(nuevoTotal >= 0){
+                    total.innerText = nuevoTotal;
+                }
+                document.querySelector('.input').value = "";
+            }
+        });
+
+
+    </script>
+</body>
+</html>
